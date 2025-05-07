@@ -9,6 +9,8 @@ Note - I developed the code in notebooks first (see notebooks folder) then conve
 python -m venv env
 source activate env/bin/activate
 pip install -r requirements.txt
+
+git clone https://github.com/seclab-fudan/APIGraph
 ```
 
 To download apks, follow instructions in https://github.com/seclab-fudan/APIGraph
