@@ -22,12 +22,12 @@ import shutil
 # In[2]:
 
 
-apk_fp = '/scratch/rhm4nj/ml-sec/data/apks/3A68E7A7808C3B0F228975096BCFDF7856E8C0E8CCB06DCF138EEB4ECDF7D0AE.apk'
+# apk_fp = '/scratch/rhm4nj/ml-sec/data/apks/3A68E7A7808C3B0F228975096BCFDF7856E8C0E8CCB06DCF138EEB4ECDF7D0AE.apk'
 
-# if len(sys.argv) != 2:
-#     print("Usage: python process_apk.py <path_to_apk>")
-#     sys.exit(1)
-# apk_fp = sys.argv[1]
+if len(sys.argv) != 2:
+    print("Usage: python process_apk.py <path_to_apk>")
+    sys.exit(1)
+apk_fp = sys.argv[1]
 
 #########################################################################################################
 

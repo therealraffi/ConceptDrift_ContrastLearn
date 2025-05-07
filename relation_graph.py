@@ -4,6 +4,7 @@ from collections import defaultdict
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 from matplotlib.patches import Patch
+import random
 
 from androguard.misc import AnalyzeAPK
 import pickle
@@ -65,26 +66,29 @@ class RelationGraph:
 
     def visualize(self, sub=None, n=50, node_size=800):
         G = sub or self.G
-        nodes = list(G.nodes())[:n] if sub is None else list(G.nodes())
+        nodes = list(G.nodes())
+        if len(nodes) > n:
+            nodes = random.sample(nodes, n)
         H = G.subgraph(nodes)
         types = sorted({self.node_type[n] for n in H})
         cmap_n = plt.cm.tab10.colors
-        ncol = {t:cmap_n[i%len(cmap_n)] for i,t in enumerate(types)}
+        ncol = {t: cmap_n[i % len(cmap_n)] for i, t in enumerate(types)}
         nc = [ncol[self.node_type[n]] for n in H]
-        rels = sorted({d['rel'] for _,_,d in H.edges(data=True)})
+        rels = sorted({d['rel'] for _, _, d in H.edges(data=True)})
         cmap_e = plt.cm.Set2.colors
-        ecol = {r:cmap_e[i%len(cmap_e)] for i,r in enumerate(rels)}
-        ec = [ecol[d['rel']] for _,_,d in H.edges(data=True)]
+        ecol = {r: cmap_e[i % len(cmap_e)] for i, r in enumerate(rels)}
+        ec = [ecol[d['rel']] for _, _, d in H.edges(data=True)]
         pos = nx.spring_layout(H)
-        plt.figure(figsize=(8,8))
+        plt.figure(figsize=(8, 8))
         nx.draw_networkx_nodes(H, pos, node_color=nc, node_size=node_size)
         nx.draw_networkx_labels(H, pos, font_color='white', font_size=8)
         nx.draw_networkx_edges(H, pos, edge_color=ec, arrowsize=12)
-        nleg = [Patch(color=c, label=t) for t,c in ncol.items()]
-        eleg = [Line2D([0],[0], color=ecol[r], lw=2, label=self.rel_map[r]) for r in rels]
-        plt.legend(handles=nleg+eleg, loc='best')
-        plt.axis('off'); plt.tight_layout(); plt.show()
-
+        nleg = [Patch(color=c, label=t) for t, c in ncol.items()]
+        eleg = [Line2D([0], [0], color=ecol[r], lw=2, label=self.rel_map[r]) for r in rels]
+        plt.legend(handles=nleg + eleg, loc='best')
+        plt.axis('off')
+        plt.tight_layout()
+        plt.show()
 
     def save_subgraph(self, subgraph, path):
         with open(path, 'wb') as f:
