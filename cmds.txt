@@ -1,0 +1,14 @@
+curl -O --remote-header-name -G -d apikey=4f145c62ea908156a156f2eff72e0be385d25bb7fd6947442a14f7f97b154101 -d sha256=b5f376a940f8b2d848e88d35e4a301c9 https://androzoo.uni.lu/api/download
+python -m nbconvert --to script testing.ipynb
+
+mamba install -y \
+  -c pyg -c pytorch -c conda-forge \
+    torch-scatter torch-sparse torch-cluster torch-spline-conv torch-geometric
+
+squeue -u $USER -h -o "%i %j" | grep -v "ood_vsco" | awk '{print $1}' | sed 's/_[[][^]]*[]]//' | xargs -r scancel
+
+
+
+
+
+

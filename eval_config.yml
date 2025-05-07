@@ -1,0 +1,27 @@
+dataset:
+  meta_csv: /scratch/rhm4nj/ml-sec/data/dataset/apk_metadata.csv
+  graph_dir: /scratch/rhm4nj/ml-sec/data/subgraphs
+  pair_file: /scratch/rhm4nj/ml-sec/data/dataset/pairs.pkl
+
+relation_graph:
+  rel_path: /scratch/rhm4nj/ml-sec/APIGraph/src/res/relations.txt
+  ent_path: /scratch/rhm4nj/ml-sec/APIGraph/src/res/entities.txt
+  type_map: {'package': 1, 'class': 2, 'method': 3, 'permission': 4}
+  rel_map:
+    1: function_of
+    2: class_of
+    3: inheritance
+    4: uses_parameter
+    5: returns
+    6: throws
+    7: alternative
+    8: conditional
+    9: refers_to
+    10: uses_permission
+
+evaluation:
+  years: [2013, 2015, 2018]
+  samples_per_year: 50
+  label_map: {'strong': 0, 'weak': 1, 'benign_malware': 2}
+  model_path: /scratch/rhm4nj/ml-sec/runs/models/model.pt
+  svm_path: /scratch/rhm4nj/ml-sec/runs/models/svm_baseline.joblib

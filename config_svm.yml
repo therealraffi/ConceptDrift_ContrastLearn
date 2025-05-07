@@ -1,0 +1,13 @@
+meta_csv: "/scratch/rhm4nj/ml-sec/data/dataset/apk_metadata.csv"
+graph_dir: "/scratch/rhm4nj/ml-sec/data/subgraphs"
+pair_file: "/scratch/rhm4nj/ml-sec/data/dataset/pairs.pkl"
+svm_path: "/scratch/rhm4nj/ml-sec/runs/models/svm_baseline.joblib"
+gnn_path: "/scratch/rhm4nj/ml-sec/runs/models/model.pt"
+
+years: [2012]
+samples_per_year: 5000
+
+label_map:
+  strong: 0
+  weak: 1
+  benign_malware: 2

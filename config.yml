@@ -1,0 +1,26 @@
+paths:
+  meta_csv: "/scratch/rhm4nj/ml-sec/data/dataset/apk_metadata.csv"
+  pair_file: "/scratch/rhm4nj/ml-sec/data/dataset/pairs.pkl"
+  graph_dir: "/scratch/rhm4nj/ml-sec/data/subgraphs"
+  rel_path: "/scratch/rhm4nj/ml-sec/APIGraph/src/res/relations.txt"
+  ent_path: "/scratch/rhm4nj/ml-sec/APIGraph/src/res/entities.txt"
+  log_dir: "/scratch/rhm4nj/ml-sec/runs/logs/hcl_training"
+  ckpt_path: "/scratch/rhm4nj/ml-sec/runs/models/model.pt"
+
+training:
+  num_pairs: 500000
+  sample_pairs: 2560
+  batch_size: 256
+  epochs: 50
+  lr: 0.001
+  print_every: 10
+  save_pairs: false
+
+loss:
+  lambda1: 1.0
+  lambda2: 0.85
+  lambda3: 1.0
+  tau: 1.0
+  m0: 0.4
+  m2: 1.0
+  beta: 0.1
