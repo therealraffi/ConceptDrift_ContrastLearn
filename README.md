@@ -14,7 +14,9 @@ The graph illustrates the Time-Aware HCL loss objectives. Benign samples are in 
 
 ![Results](imgs/results.png)
 
-This table shows that the proposed model maintains high F1 scores and low false negative rates across all test years, unlike the SVM baseline which degrades rapidly
+This table shows that the proposed model maintains high F1 scores and low false negative rates across all test years, unlike the SVM baseline which degrades rapidly.
+
+[Full report can be found here](https://drive.google.com/file/d/1UVdjzS9yS_OdTyfUmMhR7HlYi07gaXYR/view?usp=sharing).
 
 ## Setup and Running
 
