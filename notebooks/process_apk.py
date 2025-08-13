@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import networkx as nx
 import csv
 from collections import defaultdict
@@ -18,25 +12,13 @@ import sys
 import os
 import shutil
 
-
-# In[2]:
-
-
-# apk_fp = '/scratch/rhm4nj/ml-sec/data/apks/3A68E7A7808C3B0F228975096BCFDF7856E8C0E8CCB06DCF138EEB4ECDF7D0AE.apk'
-
 if len(sys.argv) != 2:
     print("Usage: python process_apk.py <path_to_apk>")
     sys.exit(1)
 apk_fp = sys.argv[1]
 
-#########################################################################################################
-
 apk_id = os.path.basename(apk_fp).replace(".apk", "")
 apk_obj, dvm_obj, analysis_obj = AnalyzeAPK(apk_fp)
-
-
-# In[4]:
-
 
 dataset_folder = "/scratch/rhm4nj/ml-sec/APIGraph/src/res"
 type_map = {'package':1,'class':2,'method':3,'permission':4}
@@ -55,5 +37,4 @@ rg = RelationGraph(
 )
 
 subg = rg.apk_subgraph(analysis_obj)
-rg.save_subgraph(subg, f'/scratch/rhm4nj/ml-sec/data/subgraphs/{apk_id}.gpickle')
-
+rg.save_subgraph(subg, f'../data/subgraphs/{apk_id}.gpickle')

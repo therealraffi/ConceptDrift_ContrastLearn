@@ -4,3 +4,8 @@ mlsec/
 env/
 logs/
 active-learning/
+__pycache__/
+
+cmds.txt
+startup.sh
+.env

@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
-
 import yaml
 import torch
 import pickle
@@ -15,10 +9,6 @@ from sklearn.metrics import classification_report
 from my_models import *
 from relation_graph import RelationGraph
 from joblib import load
-
-
-# In[ ]:
-
 
 with open("eval_config.yml") as f:
     cfg = yaml.safe_load(f)
@@ -66,10 +56,6 @@ mu_malware = np.stack([pooled_emb(apk) for apk in malware_sample])
 
 mu_b = mu_benign.mean(axis=0)
 mu_m = mu_malware.mean(axis=0)
-
-
-# In[ ]:
-
 
 for year in cfg["evaluation"]["years"]:
     ids = [i for i, row in meta.iterrows() if row.datetime.year == year]
